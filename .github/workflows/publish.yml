@@ -1,0 +1,30 @@
+name: Publish package
+
+on:
+  push:
+    paths:
+      - nodejs/nodeDeb.sh
+
+jobs:
+  build-nodejs-deb:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt update && sudo apt-get install build-essential dpkg
+
+    - name: Build Deb File
+      run: |
+        bash nodejs/nodeDeb.sh
+
+    - name: Automatic Release
+      uses: marvinpinto/action-automatic-releases@latest
+      with: 
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: false
+        title: "Latest Build"
+        files: |
+          *.deb
