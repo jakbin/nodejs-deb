@@ -2,7 +2,7 @@
 
 make deb file of nodejs
 
-current version :- v16.14.0 (LTS)
+current version :- v22.14.0 (LTS)
 
 ## install
 
