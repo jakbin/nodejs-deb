@@ -3,21 +3,17 @@ Version: 22.16.0
 Priority: optional
 Section: web
 Maintainer: Jak Bin https://github.com/jakbin
-Installed-Size: 937 kB
-Provides: node-types-node (= 12.20.42~12.22.9~dfsg-1)
+Installed-Size: 35893 kB
 Depends: libc6 (>= 2.2.5)
 Recommends: ca-certificates, nodejs-doc
 Architecture: amd64
-Suggests: npm
-Breaks: node-babel-runtime (<< 7), node-typescript-types (<< 20210110~)
 Homepage: https://nodejs.org/
 Tag: devel::interpreter, devel::lang:ecmascript, devel::runtime, devel::web,
  implemented-in::c++, implemented-in::ecmascript,
  interface::commandline, interface::shell, protocol::dns,
  protocol::http, protocol::tcp, role::program, scope::application,
  works-with-format::json
-Download-Size: 147 kB
-APT-Sources: https://kali.download/kali kali-rolling/main amd64 Packages
+Download-Size: 33280 KB
 Description: evented I/O for V8 javascript - runtime executable
  Node.js is a platform built on Chrome's JavaScript runtime for easily
  building fast, scalable network applications. Node.js uses an
