@@ -19,12 +19,16 @@ jobs:
       run: |
         bash nodejs/nodeDeb.sh
 
+    - name: Extract Node.js Version
+      id: extract_version
+      run: echo "NODE_VERSION=$(grep -oP "version='\K[^']+" nodejs/nodeDeb.sh)" >> $GITHUB_ENV
+
     - name: Automatic Release
       uses: marvinpinto/action-automatic-releases@latest
       with: 
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
         prerelease: false
-        title: "Latest Build"
+        title: "Node.js ${{ env.NODE_VERSION }} Build"
         files: |
           *.deb
