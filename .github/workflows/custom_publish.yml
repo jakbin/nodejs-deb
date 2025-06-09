@@ -19,7 +19,7 @@ jobs:
 
     - name: Update nodejs version in nodeDeb.sh
       run: |
-        sed -i "s/^version='.*'/version='${{ github.event.inputs.nodejs_version }}'/" nodejs/nodeDeb.sh
+        sed -i "s/^version='v.*'/version='v${{ github.event.inputs.nodejs_version }}'/" nodejs/nodeDeb.sh
         sed -i "s/^Version: .*/Version: ${{ github.event.inputs.nodejs_version }}/" nodejs/control
 
     - name: Build Deb File
