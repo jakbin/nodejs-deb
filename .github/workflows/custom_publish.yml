@@ -1,0 +1,41 @@
+name: Release Nodejs custom version build
+
+on:
+  workflow_dispatch:
+    inputs:
+      nodejs_version:
+        description: 'Node.js version to build'
+        required: true
+
+jobs:
+  build-nodejs-deb:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: sudo apt update && sudo apt-get install build-essential dpkg
+
+    - name: Update nodejs version in nodeDeb.sh
+      run: |
+        sed -i "s/^version='.*'/version='${{ github.event.inputs.nodejs_version }}'/" nodejs/nodeDeb.sh
+        sed -i "s/^Version: .*/Version: ${{ github.event.inputs.nodejs_version }}/" nodejs/control
+
+    - name: Build Deb File
+      run: |
+        bash nodejs/nodeDeb.sh
+
+    - name: Extract Node.js Version
+      id: extract_version
+      run: echo "NODE_VERSION=$(grep -oP "version='\K[^']+" nodejs/nodeDeb.sh)" >> $GITHUB_ENV
+
+    - name: Automatic Release
+      uses: marvinpinto/action-automatic-releases@latest
+      with: 
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "${{ env.NODE_VERSION }}"
+        prerelease: false
+        title: "Node.js ${{ env.NODE_VERSION }} LTS Build"
+        files: |
+          *.deb
