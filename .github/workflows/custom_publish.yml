@@ -36,6 +36,6 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "${{ env.NODE_VERSION }}"
         prerelease: false
-        title: "Node.js ${{ env.NODE_VERSION }} Build"
+        title: "Node.js ${{ env.NODE_VERSION }} Current Build"
         files: |
           *.deb

@@ -5,4 +5,12 @@ Deb file for Nodejs
 
 [![All Downloads](https://img.shields.io/github/downloads/jakbin/deb-scripts/total.svg)](https://github.com/jakbin/deb-scripts)
 
-### Nodejs Version : v22.14.0
+## Nodejs Version : 
+
+
+### LTS :
+- v22.17.1
+- v22.16.0 
+
+### Latest
+- v24.1.0
