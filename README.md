@@ -13,4 +13,5 @@ Deb file for Nodejs
 - v22.16.0 
 
 ### Latest
+- v24.4.1
 - v24.1.0
